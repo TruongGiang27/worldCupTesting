@@ -3,7 +3,9 @@ package com.worldcup;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -1296,15 +1298,22 @@ public class WorldCupTest {
     }
 
     // 117 //Kiểm tra xem không có hai trận đấu nào giống nhau
-    @Test
+   @Test
     public void testRoundOf16UniqueMatchPairs() {
+        worldCup = new WorldCup();
+        // Khởi tạo các đội, nhóm và chơi các trận đấu để đến được vòng 1/16
+        worldCup.initializeTeams();
+        worldCup.playGroupStage();
+        worldCup.advanceToKnockoutStage();
+
         worldCup.playRoundOf16();
         List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
         assertNotNull(roundOf16Matches);
-        List<String> matchPairs = new ArrayList<>();
+        
+        Set<String> matchPairs = new HashSet<>();
         for (Match match : roundOf16Matches) {
             String pair = match.getTeamA().getName() + " vs " + match.getTeamB().getName();
-            assertFalse(matchPairs.contains(pair));
+            assertFalse("Duplicate match pair found: " + pair, matchPairs.contains(pair));
             matchPairs.add(pair);
         }
     }
