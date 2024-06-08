@@ -50,6 +50,7 @@ public class Match {
     public boolean isDraw() {
         return draw;
     }
+
     public Team getTeamA() {
         return teamA;
     }
@@ -86,7 +87,7 @@ public class Match {
     }
 
     public String getResult() {
-        return winner != null ? winner.getName() + " wins" : "Draw";
+        return winner != null ? winner.getName()+ " wins" : "Draw";
     }
 
     public void playPenaltyShootout() {
@@ -129,7 +130,7 @@ public class Match {
     }
 
     public String playMatch(String TeamA, String TeamB) { // Mô phỏng trận đấu
-        return "Trận đấu đã diễn ra giữa " + TeamA + " và "+ TeamB + " trong "+ totalDuration + " phút.";
+        return "Trận đấu đã diễn ra giữa " + TeamA + " và " + TeamB + " trong " + totalDuration + " phút.";
     }
 
     public void setScore(int scoreTeamA, int scoreTeamB) {
@@ -138,26 +139,15 @@ public class Match {
     }
 
     public String playMatchReturn() { // Mô phỏng trận đấu
-        return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
-    }
-    public String playFirstHalf() { // Mô phỏng hiệp 1
-        return "Hiệp 1 đã diễn ra trong " + haftTime + " phút.";
+        return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration
+                + " phút.";
     }
 
-    public String playSecondHalf() { // Mô phỏng hiệp 2
-        return "Hiệp 2 đã diễn ra trong " + secondHalfDuration + " phút.";
+    public void playExtraTime() {
+
     }
 
-    public String playHalfTimeBreak() { // Mô phỏng nghỉ giải lao
-        return "Nghỉ giải lao đã diễn ra trong " + halfTimeBreak + " phút.";
+    public void setWinner(Team winner) {
+        this.winner = winner;
     }
-
-    public String playInjuryTime() { // Mô phỏng bù giờ
-        return "Bù giờ đã diễn ra.";
-    }
-
-    public String playExtraTime() { // Mô phỏng hiệp phụ
-        return "Hiệp phụ đã diễn ra.";
-    }
-
 }
